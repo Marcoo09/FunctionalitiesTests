@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     int Sbrigthness;
 
+    HandleChangesInScreen handle = new HandleChangesInScreen();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
                 Context context = getApplicationContext();
 
                 // Check whether has the write settings permission or not.
-                boolean settingsCanWrite = hasWriteSettingsPermission(context);
-
+                //boolean settingsCanWrite = hasWriteSettingsPermission(context);
+                boolean settingsCanWrite = handle.hasWriteSettingsPermission(context);
                 // If do not have then open the Can modify system settings panel.
                 if(!settingsCanWrite) {
-                    changeWriteSettingsPermission(context);
+                    handle.changeWriteSettingsPermission(context);
                 }else {
-                    changeScreenBrightness(context, i);
+                    handle.changeScreenBrightness(context, i);
                 }
 
                 //Change brightness
