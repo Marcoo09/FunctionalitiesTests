@@ -100,7 +100,7 @@ public class SpeechRecognizerPrueba extends AppCompatActivity {
                 switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_UP:
                         mSpeechRecognizer.stopListening();
-                        editText.setHint("You will see input here");
+                       // editText.setHint("You will see input here");
                         break;
 
                     case MotionEvent.ACTION_DOWN:
