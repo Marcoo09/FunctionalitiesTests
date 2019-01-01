@@ -7,6 +7,10 @@ import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowContentFrameStats;
+import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.widget.SeekBar;
 
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     handle.changeWriteSettingsPermission(context);
                 }else {
                     handle.changeScreenBrightness(context, i);
-                }
+               }
 
                 //Change brightness
     /*
@@ -62,15 +66,15 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Settings.System.putInt(getContentResolver(),Settings.System.SCREEN_BRIGHTNESS,i);
-
+                //Other way
                 try {
-                    int br = Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);  //this will get the information you have just set...
+                    Window w = getWindow();
+                    WindowManager.LayoutParams lp = w.getAttributes();
+                    lp.screenBrightness = i / 255; //...and put it here
+                    w.setAttributes(lp);
 
-                    WindowManager.LayoutParams lp = getWindow().getAttributes();
-                    lp.screenBrightness = (float) br / 255; //...and put it here
-                    getWindow().setAttributes(lp);
-                } catch (Exception e) {}
-*/
+                } catch (Exception e) {}*/
+
             }
 
             @Override
